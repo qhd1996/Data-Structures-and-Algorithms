@@ -1,8 +1,8 @@
 /************************************************* 
 License: Apache 2.0
 Author: 錢昊達
-Date:2018-08-14 
-Description:leetcode上Add Two Numbers II解答
+Date: 2018-08-14 
+Description: leetcode上Add Two Numbers II解答
 **************************************************/  
 /**
  * Definition for singly-linked list.
