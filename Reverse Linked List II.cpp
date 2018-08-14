@@ -1,3 +1,9 @@
+/************************************************* 
+License: 錢昊達
+Author: 
+Date:2010-08-25 
+Description: leetcode上Reverse Linked List II解答
+**************************************************/  
 /**
  * Definition for singly-linked list.
  * struct ListNode {
