@@ -1,6 +1,6 @@
 /************************************************* 
-License: 錢昊達
-Author: 
+License: Apache 2.0
+Author: 錢昊達
 Date:2010-08-25 
 Description: leetcode上Reverse Linked List II解答
 **************************************************/  
