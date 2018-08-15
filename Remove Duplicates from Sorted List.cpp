@@ -1,4 +1,9 @@
-
+/************************************************* 
+License: Apache 2.0
+Author: 錢昊達
+Date: 2018-08-15 
+Description: Remove Duplicates from Sorted List解答
+**************************************************/ 
 /**
  * Definition for singly-linked list.
  * struct ListNode {
