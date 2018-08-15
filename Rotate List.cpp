@@ -27,7 +27,7 @@ public:
         k=len-k%len;
         //上述循环结束之后最后一个p指向链表最后一个元素
         
-        //连城了一个环
+        //连成了一个环
         p->next=head;
         for(int i=0;i<k;i++){
             p=p->next;
