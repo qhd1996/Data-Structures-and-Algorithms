@@ -1,3 +1,4 @@
+//状态转移方程dp[i]=max(nums[i],dp[i-1]+nums[i]);
 class Solution {
 public:
     int maxSubArray(vector<int>& nums) {
