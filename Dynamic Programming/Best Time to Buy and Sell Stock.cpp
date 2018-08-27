@@ -4,12 +4,15 @@
 *d[i][j]=max(d[i][j-1])+a[j],max(d[k][j-1])+a[i])
 *这里M=1
 **/
-int maxProfit(vector<int> &prices) {
-    int maxPro = 0;
-    int minPrice = INT_MAX;
-    for(int i = 0; i < prices.size(); i++){
-        minPrice = min(minPrice, prices[i]);
-        maxPro = max(maxPro, prices[i] - minPrice);
+class Solution {
+public:
+    int maxProfit(vector<int>& prices) {
+        int maxPro=0;
+        int minPrice=INT_MAX;
+        for(int i=0;i<prices.size();i++){
+            minPrice=min(minPrice,prices[i]);
+            maxPro=max(maxPro,prices[i]-minPrice);
+        }
+        return maxPro;
     }
-    return maxPro;
-}
+};
