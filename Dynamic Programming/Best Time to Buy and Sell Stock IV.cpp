@@ -1,30 +1,27 @@
 class Solution {
 public:
-    int maxProfit(int k, vector<int>& prices) {
-        int maxProf=0;
+    int maxProfit(int k, vector<int> &prices) {
+        int N = prices.size();
+        if (k == 0 || N < 2) return 0;
         
-        if(prices.size()<2)
-            return 0;
-        if(k>prices.size()/2){
-            for(int i=1; i<prices.size(); i++)
-                maxProf += max(prices[i]-prices[i-1], 0);
-            return maxProf;
+        if (k > N / 2) {
+            int sum = 0;
+            for (int i = 1; i < N; i++){
+                if (prices[i] > prices[i - 1]){
+                    sum += prices[i] - prices[i - 1];
+                }
+            }
+            return sum;
         }
         
-        int hold[k+1];
-        int rele[k+1];
-        for (int i=0;i<=k;++i){
-            hold[i] = INT_MAX;
-            rele[i] = 0;
-        }
-        
-        for(int i=0; i<prices.size(); i++){
-            for(int j=k; j>=1; j--){
-                rele[j] = max(rele[j], prices[i]-hold[j]);
-                hold[j] = min(hold[j], prices[i]-rele[j-1]);
-                maxProf=max(maxProf, rele[j]);
+        vector<int> buy(k + 1, INT_MIN);
+        vector<int> sell(k + 1, 0);
+        for (int i = 0; i< N; ++i) {
+            for (int j = 1; j <= k; ++j) {
+                buy[j] = max(buy[j], sell[j - 1] - prices[i]);
+                sell[j] = max(sell[j], buy[j] + prices[i]);
             }
         }
-        return maxProf;
+        return sell[k];
     }
 };
