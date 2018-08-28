@@ -1,3 +1,7 @@
+/**
+*dp[k, i] = max(dp[k, i-1], prices[i] - prices[j] + dp[k-1, j-1]), j=[0..i-1]
+*
+**/
 class Solution {
 public:
     int maxProfit(int k, vector<int>& prices) {
