@@ -9,17 +9,17 @@ public:
             return 0;
         
         int i = 0;
-        while (str[i] == ' ' && i < n) i++;
+        while (str[i]==' '&&i<n) i++;
         
-        if (str[i] == '+') {
+        if (str[i]=='+') {
             i++;
-        } else if (str[i] == '-') {
+        } else if (str[i]=='-') {
             sign = -1;
             i++;
         }
         
         for(;i<n;i++){
-            if (str[i] < '0' || str[i] > '9')
+            if (str[i]<'0'||str[i]>'9')
                 break;
             if(num>INT_MAX/10||(num==INT_MAX/10&&(str[i]-'0')>INT_MAX%10)){
                 return sign==-1?INT_MIN:INT_MAX;
