@@ -1,4 +1,4 @@
-//leetcode的discuss区大佬答案，学习一下吧，这题真的是蛮难的
+//leetcode的discuss区大佬答案，学习一下吧，这题真的是蛮难的。
 class Solution {
 public:
     bool isMatch(string s, string p) {
