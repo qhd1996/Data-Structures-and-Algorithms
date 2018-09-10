@@ -4,6 +4,7 @@
 #include <vector>
 #include <iostream> 
 #include <string>
+#pragma disable(warning:4996)
 using namespace std;
 typedef long long LL;
 const int maxn=1010;
@@ -60,7 +61,7 @@ string getMax(string str1)
 				if(pr1[i].length>ans)
 				{
 					ans=pr1[i].length;
-					str=str1.substr(pr1[i].start,pr1[i].end);
+					str=str1.substr(pr1[i].start,pr1[i].length);
 				}
 			}
 		}
