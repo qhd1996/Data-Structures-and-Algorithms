@@ -1,86 +1,61 @@
-#include<iostream>
-#include<cstdio>
-#include<cstring>
-#include<cstdlib>
-#include<cmath>
-#include<algorithm>
-#include<stack>
-#include<queue>
-#include<vector>
-using namespace std;
- 
- 
-#define INF  0x3f3f3f3f   //定义一个很大的数
- 
- 
-struct Node
-{
-int num,val;   //存放结点编号和到初始点的距离 
-}nod;
- 
- 
-priority_queue<Node> qq;;   //优先从小到大
- 
- 
-bool operator < (Node a,Node b)
-{
-if(a.val == b.val) return a.num>b.num;
-return a.val>b.val;              //先出小 
-}
- 
- 
-int book[100];  //检查这个点是否用过 
-int dis[100];     //到原点最短距离 
-int D[100][100];  //记录路径长度
-int V,E; 
- 
- 
-int main()
-{
-int a,b,d;
-while(cin>>V>>E && V&& E)  //输入顶点数和边数 
-{
-while(!qq.empty()) qq.pop(); //清空
-memset(book,0,sizeof(book));
-memset(D,-1,sizeof(D)); 
- 
-for(int i=0;i<E;i++)
-{
-cin>>a>>b>>d;
-D[a][b] = D[b][a] = d;
-}
- 
-for(int i=2;i<=V;i++)
-dis[i]=INF;
- 
-dis[1]=0;
-nod.num=1;
-nod.val=0;
- 
-qq.push(nod);   //将起点放入队列 
- 
-while(!qq.empty())  //不为空时 
-{
- 
-for(int i=2;i<=V;i++)
-{
-if(D[qq.top().num][i] != -1  &&dis[i]>dis[qq.top().num] + D[qq.top().num][i]) 
-{
- 
-dis[i]=dis[qq.top().num] + D[qq.top().num][i];
-nod.num=i; nod.val=dis[i];
-qq.push(nod);
-}
-}
- 
-qq.pop();
-}
- 
-for(int i=1;i<=V;i++)
-{
-cout<<"初始点到"<<i<<"点的距离为："<<dis[i]<<endl;
+#include <queue>  
+#include <vector>  
+#include <cstdio>  
+#include <cstring>  
+#include <iostream>  
+#include <algorithm>  
+#define  pb push_back  
+#define  mp make_pair  
+#define  sz(x) ((int)(x).size())  
+using namespace std;  
+  
+const int N = 1010;  
+const int INF = 12345678;  
+int n, m, dis[N];  
+bool vis[N];  
+struct Node {  
+    int d, e;  
+    bool operator < (const Node x) const {  
+        return x.d < d;  
+    }  
+    Node(int d, int e):d(d), e(e){}  
+};  
+vector<pair<int, int> > V[N];  
+  
+void dijkstra(int s) {  
+    priority_queue<Node> q;  
+    fill(dis + 1, dis + n + 1, INF);  
+    fill(vis + 1, vis + n + 1, false);  
+    q.push(Node(0, s));  
+    dis[s] = 0;  
+    while(!q.empty()) {  
+        Node deq = q.top(); q.pop();  
+        if(vis[deq.e])    
+            continue;  
+        vis[deq.e] = true;  
+        for(int i = 0;i < sz(V[deq.e]);i++) {  
+            int e = V[deq.e][i].first;  
+            int w = V[deq.e][i].second;  
+            if(dis[deq.e] < dis[e] - w) {  
+                dis[e] = dis[deq.e] + w;  
+                q.push(Node(dis[e], e));      
+            }  
+        }  
+    }     
+}  
+  
+int main(){  
+    while(cin >> n >> m, n || m) {  
+        for(int i = 1;i <= n;i++)  
+            V[i].clear();  
+        for(int i = 0;i < m;i++) {  
+            int a, b, w;  
+            scanf("%d%d%d", &a, &b, &w);  
+            V[a].pb(mp(b, w));  
+            V[b].pb(mp(a, w));    
+        }  
+        dijkstra(1);  
+        printf("%d\n", dis[n]);  
+    }  
+    return 0;  
 } 
- 
-}
-return 0;
-}
