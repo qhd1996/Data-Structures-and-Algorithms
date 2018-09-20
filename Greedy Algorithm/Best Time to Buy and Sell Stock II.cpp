@@ -1,4 +1,4 @@
-//贪心法，低进高出，把所有整的价格差相加起来
+//贪心法，低进高出，把所有正的价格差相加起来
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
